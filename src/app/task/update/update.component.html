@@ -1,0 +1,23 @@
+<div class="registration-form">
+  <form  [formGroup]="updateform" (ngSubmit)="onsubmit()">
+    <div style="cursor: pointer; text-align: right; color: red; font-size: larger;" (click) = "closeedit()">&times;</div>
+    <div class="form-group">
+      <input type="text" class="form-control item" formControlName="product_name"  placeholder="Product Name">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control item" formControlName="quantity"  placeholder="Quantity">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control item" formControlName="description"  placeholder="Description">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control item" formControlName="amount"  placeholder="Amount">
+    </div>
+    <!-- <div class="form-group">
+      <input type="file" name="file" formControlName="file" (change)="fileEvent($event)">
+    </div> -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-block create-account" [disabled] = "!updateform.valid">Create</button>
+    </div>
+  </form>
+</div>

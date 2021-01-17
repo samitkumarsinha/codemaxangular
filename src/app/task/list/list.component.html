@@ -1,0 +1,4 @@
+<div *ngFor="let item of products">
+  <app-card [product]="item" (details)="details($event)"></app-card>
+</div>
+

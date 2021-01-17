@@ -1,0 +1,47 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Navigation</div>
+    <div class="list-group list-group-flush">
+      <span style="cursor:pointer" (click) = "setmenu('landing')" class="list-group-item list-group-item-action bg-light">Home</span>
+      <span style="cursor:pointer" (click) = "setmenu('product')" class="list-group-item list-group-item-action bg-light">Product</span>
+      <span style="cursor:pointer" (click) = "setmenu('company')" class="list-group-item list-group-item-action bg-light">Company</span>
+      <span style="cursor:pointer" (click) = "setmenu('contact')" class="list-group-item list-group-item-action bg-light">Contact</span>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <div style="width: 50%; float:left">
+        <button class="btn btn-info" id="menu-toggle">Menu</button>
+     </div>
+
+     <div style="width: 50%; float:right; text-align: right;">
+      <span style="float:right;" class="pull-right;">{{cartstatus}}</span>
+     </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div [ngSwitch]="menuitem">
+        <span *ngSwitchCase="'landing'">
+       <app-landingpage></app-landingpage>
+      </span>
+      <span *ngSwitchCase="'product'">
+        <app-product (setlb) = "setlabel($event)"></app-product>
+       </span>
+       <span *ngSwitchCase="'company'">
+        <app-company></app-company>
+       </span>
+       <span *ngSwitchCase="'contact'">
+        <app-contact></app-contact>
+       </span>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>

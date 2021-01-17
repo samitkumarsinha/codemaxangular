@@ -1,0 +1,33 @@
+<div class="my-login-page">
+  <section class="h-100">
+    <div class="container h-100">
+      <div class="row justify-content-md-center h-100">
+        <div class="card-wrapper">
+          <div class="card fat">
+            <div class="card-body">
+              <h4 class="card-title">Login</h4>
+              <form [formGroup]="loginform" (ngSubmit)="onsubmit()">
+                <div class="form-group">
+                  <label for="email">E-Mail Address</label>
+                  <input formControlName="username"  type="email" class="form-control"  required autofocus>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input formControlName="password" type="password" class="form-control"  required >
+                </div>
+                <div class="form-group m-0">
+                  <button type="submit" [disabled] = "!loginform.valid" class="btn btn-primary btn-block">
+                    Login
+                  </button>
+                </div>
+                <div class="mt-4 text-center">
+                  Don't have an account? <a [routerLink]="['/admin/register']">Create One</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

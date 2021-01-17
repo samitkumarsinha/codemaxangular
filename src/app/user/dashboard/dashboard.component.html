@@ -1,0 +1,35 @@
+ <div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading">Company Name</div>
+    <div class="list-group list-group-flush">
+      <span (click) = "create()" style="cursor:pointer" class="list-group-item list-group-item-action bg-light">Create</span>
+      <span (click) = "list()" style="cursor:pointer" class="list-group-item list-group-item-action bg-light">List</span>
+
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <button class="btn btn-info" id="menu-toggle">Menu</button>
+    </nav>
+
+    <div class="container-fluid">
+      <h2>Manage Products</h2>
+      <div [ngSwitch]="menuitem">
+        <span *ngSwitchCase="'create'">
+       <app-create (setmenu) = "setmenu()"></app-create>
+      </span>
+      <span *ngSwitchCase="'list'">
+        <app-list></app-list>
+       </span>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>

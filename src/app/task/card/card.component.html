@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="page-header">
+      <h3>{{product.pname}}</h3>
+    </div>
+    <p>Quantity {{product.quantity}}</p>
+    <p>Description {{product.description}}</p>
+    <p>Amount {{product.amount}}</p>
+    <p>Image {{product.image}}</p>
+    <div class="floatright">
+      <table class="pullright">
+        <tr><td><span (click) = "del(product)">Delete | </span></td><td>
+          <span (click) = "edit(product)">Edit</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="positivechange">
+    <div *ngIf="editrec">
+      <app-update [product] = "editrec" (list)="showlist()" (closeclick) = "close()"></app-update>
+    </div>
+  </div>
+
