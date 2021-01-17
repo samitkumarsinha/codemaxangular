@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../../data.service';
 import { Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +11,7 @@ import { Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
   regform;
   errmsg='';
-  constructor(private fb:FormBuilder, private ds:DataService, private router : Router) { }
+  constructor(private fb:FormBuilder, private ds:DataService, private router : Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.regform = this.fb.group({
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
     const password = this.regform.get('password').value;
     const cpassword = this.regform.get('cpassword').value;
     if(password !== cpassword) {
+      this.toastr.error('Password Mismatch');
       this.errmsg = 'Password Mismatch';
       return;
     }else{
@@ -34,6 +36,7 @@ export class RegisterComponent implements OnInit {
     const data = {'name': username, 'email': email, 'password': password};
     this.ds.register(data).subscribe((item) => {
       console.log(item);
+      this.toastr.success('Successfully Registered');
       this.router.navigate(['/admin/login']);
     })
   }

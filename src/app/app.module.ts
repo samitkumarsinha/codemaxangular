@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TaskModule } from './task/task.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SiteModule } from './site/site.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { SiteModule } from './site/site.module';
     HttpClientModule,
     TaskModule,
     NgbModule,
-    SiteModule
+    SiteModule,
+    BrowserAnimationsModule,
+	  ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

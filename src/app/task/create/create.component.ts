@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validator, Validators } from '@angular/forms';
 import { DataService } from '../../data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
@@ -12,7 +13,7 @@ export class CreateComponent implements OnInit {
   filedata:any;
   @Output('setmenu')
   menu = new EventEmitter();
-  constructor(private fb:FormBuilder, private ds:DataService) { }
+  constructor(private fb:FormBuilder, private ds:DataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.createform = this.fb.group({
@@ -44,6 +45,7 @@ export class CreateComponent implements OnInit {
 
     return this.ds.createproduct(myFormData).subscribe((data) => {
       console.log(data);
+      this.toastr.success('Product Added');
       this.menu.emit();
     });
 

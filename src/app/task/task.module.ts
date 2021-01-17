@@ -7,7 +7,8 @@ import { ListComponent } from './list/list.component';
 import { CardComponent } from './card/card.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateComponent } from './update/update.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [CreateComponent, ListComponent, CardComponent, UpdateComponent],
@@ -15,6 +16,8 @@ import { UpdateComponent } from './update/update.component';
     CommonModule,
     TaskRoutingModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+	  ToastrModule.forRoot()
   ],
   exports: [
     CreateComponent,

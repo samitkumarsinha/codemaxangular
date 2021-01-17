@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskModule } from '../task/task.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, DashboardComponent],
@@ -15,7 +17,9 @@ import { TaskModule } from '../task/task.module';
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    TaskModule
+    TaskModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   exports: [
     LoginComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../product';
 import { DataService } from '../../data.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   detail = new EventEmitter();
   editrec:Product;
   positivechange:boolean = true;
-  constructor(private ds:DataService) { }
+  constructor(private ds:DataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
 
@@ -25,6 +25,7 @@ export class CardComponent implements OnInit {
   del(item){
     this.ds.delproduct(item.id).subscribe((item)=>{
       console.log(item);
+      this.toastr.success('Product Deleted');
       this.detail.emit();
     })
   }

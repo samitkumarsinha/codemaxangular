@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormBuilder, Validator, Validators } from '@angular/forms';
 import { DataService } from '../../data.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -19,7 +20,7 @@ export class UpdateComponent implements OnInit, OnChanges {
   quantity;
   description;
   amount;
-  constructor(private fb:FormBuilder, private ds:DataService) {
+  constructor(private fb:FormBuilder, private ds:DataService, private toastr: ToastrService) {
     this.updateform = this.fb.group({
       product_name: ['',Validators.required],
       quantity: ['',Validators.required],
@@ -50,6 +51,7 @@ export class UpdateComponent implements OnInit, OnChanges {
     console.log(data);
     this.ds.updateproduct(data).subscribe((res)=>{
       console.log(res);
+      this.toastr.success('Product Updated');
       this.list.emit();
     })
   }
