@@ -8,6 +8,7 @@ import { Product } from '../../product';
 })
 export class ProductComponent implements OnInit {
   prod: Product[];
+  modprod = [];
   @Output('setlb')
   setlb = new EventEmitter();
   constructor(private ds:DataService) { }
@@ -18,7 +19,7 @@ export class ProductComponent implements OnInit {
         item['addtocart'] = false
       });
       this.prod = item.products;
-      console.log(this.prod );
+      this.modprod = this.prod;
     });
   }
   setlabel(modifiedprod){
@@ -34,5 +35,14 @@ export class ProductComponent implements OnInit {
     if(itemcount === 0) cartstatus = '';
     this.setlb.emit(cartstatus);
   }
-
+  findtext(item){
+    this.modprod = this.prod;
+    let seartchterm = item.target.value;
+    if(seartchterm === '') this.modprod = this.prod;
+    this.modprod = this.prod.filter(item => {
+      if(item.pname.toLowerCase().includes(seartchterm)){
+        return item;
+      }
+    })
+  }
 }
